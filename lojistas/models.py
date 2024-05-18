@@ -119,7 +119,7 @@ class Vendas(models.Model):
         ('em_andamento', 'Em Andamento'),
         ('cancelado', 'Cancelado'),
     ]
-    
+
     processo = models.CharField(
         max_length=20,
         choices=PROCESSO_CHOICES,
@@ -140,13 +140,6 @@ class Vendas(models.Model):
         total = sum(float(item['valor_total']) for item in detalhes)
         return total
 
-    def save(self, *args, **kwargs):
-        if self.pk:
-            old_instance = Vendas.objects.get(pk=self.pk)
-            if old_instance.processo != 'cancelado' and self.processo == 'cancelado':
-                self.restock_items()
-        super(Vendas, self).save(*args, **kwargs)
-
     def restock_items(self):
         detalhes = json.loads(self.detalhes)
         for item in detalhes:
@@ -154,3 +147,10 @@ class Vendas(models.Model):
             estoque_item = Estoque.objects.get(produto=produto)
             estoque_item.quantidade += int(item['quantidade'])
             estoque_item.save()
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_instance = Vendas.objects.get(pk=self.pk)
+            if old_instance.processo != 'cancelado' and self.processo == 'cancelado':
+                self.restock_items()
+        super(Vendas, self).save(*args, **kwargs)

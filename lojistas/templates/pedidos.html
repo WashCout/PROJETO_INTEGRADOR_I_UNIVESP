@@ -44,7 +44,7 @@
           <th scope="row">{{ venda.id }}</th>
           <td>{{ venda.data|date:"d/m/Y H:i" }}</td>
           <td>R$ {{ venda.valor_total }}</td>
-          <td><span class="badge text-bg-black">{{ venda.get_processo_display }}</span></td>
+          <td><span class="badge text-bg-secondary">{{ venda.get_processo_display }}</span></td>
           <td>
             <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detalhesModal-{{ venda.id }}">
               <i class="bi bi-eye"></i>
