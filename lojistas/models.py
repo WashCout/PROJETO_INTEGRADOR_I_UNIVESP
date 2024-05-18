@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator, EmailValidator, MinValueValidator
 import json
+from django.db.models import Count, Sum
+
 
 class Produto(models.Model):
     CATEGORIAS = [
@@ -154,3 +156,21 @@ class Vendas(models.Model):
             if old_instance.processo != 'cancelado' and self.processo == 'cancelado':
                 self.restock_items()
         super(Vendas, self).save(*args, **kwargs)
+
+    @classmethod
+    def get_most_ordered_products(cls):
+        vendas_realizadas = cls.objects.filter(processo='realizado')
+        produtos_quantidades = {}
+
+        for venda in vendas_realizadas:
+            detalhes = json.loads(venda.detalhes)
+            for item in detalhes:
+                nome_produto = item['nome_produto']
+                quantidade = int(item['quantidade'])
+                if nome_produto in produtos_quantidades:
+                    produtos_quantidades[nome_produto] += quantidade
+                else:
+                    produtos_quantidades[nome_produto] = quantidade
+
+        sorted_produtos = sorted(produtos_quantidades.items(), key=lambda x: x[1], reverse=True)
+        return sorted_produtos[:5]  # Retorna os 5 produtos mais pedidos

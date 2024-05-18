@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body {
+      font-family: 'Arial', sans-serif;
+  }
+  .page-catalog header,
+  .page-catalog main,
+  .page-catalog footer {
+      padding: 1rem;
+  }
+  .chart-container {
+      width: 80%;
+      margin: auto;
+      padding: 2rem;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+  }
+  h1 {
+      font-weight: bold;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #ffffff;
+  }
+  .navbar-nav .nav-item .nav-link {
+      font-weight: bold;
+  }
+  .nav-link.active {
+      color: #ff6347 !important;
+  }
+</style>
+{% endblock 'head' %}
+
+{% block 'body' %}
+<body class="page-catalog">
+  <header class="bg-primary text-white py-2">
+    <nav class="container-fluid d-flex justify-content-between align-items-center">
+      <a href="{% url 'index' %}" class="text-white text-decoration-none">
+        <img src="{% static 'home/img/logo-frutos-de-goias.png' %}" class="w-50" alt="Logo"/>
+      </a>
+      <ul class="nav d-none d-md-flex">
+        <li class="nav-item"><a href="{% url 'estoque' %}" class="nav-link text-white">Estoque</a></li>
+        <li class="nav-item"><a href="{% url 'pedidos' %}" class="nav-link text-white">Pedidos</a></li>
+      </ul>
+      <a href="{% url 'produtos_mais_pedidos' %}" class="text-white text-decoration-none">
+        <img src="{% static 'lojistas/img/arara-frutos.png' %}" class="w-50" alt="Logo"/>
+      </a>
+    </nav>
+  </header>
+
+  <main class="container my-4">
+    <h1 class="mb-4">Top 5 Produtos Vendidos na Região da Baixada Santista</h1>
+    <div class="chart-container">
+      <canvas id="produtosMaisPedidosChart"></canvas>
+    </div>
+  </main>
+
+  <footer class="bg-primary text-white py-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <p class="m-0">Distribuidora localizada em Itanhaém da Frutos de Goiás</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var ctx = document.getElementById('produtosMaisPedidosChart').getContext('2d');
+      var produtos = JSON.parse('{{ produtos|escapejs }}');
+      var quantidades = JSON.parse('{{ quantidades|escapejs }}');
+
+      var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: produtos,
+          datasets: [{
+            label: 'Produtos Mais Pedidos',
+            data: quantidades,
+            backgroundColor: 'rgba(0, 128, 0)',
+            borderColor: 'rgba(87, 31, 115)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                font: {
+                  size: 14,
+                  weight: 'bold'
+                }
+              }
+            },
+            x: {
+              ticks: {
+                font: {
+                  size: 10,
+                  weight: 'bold'
+                }
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: {
+                font: {
+                  size: 16,
+                  weight: 'bold'
+                }
+              }
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+{% endblock 'body' %}

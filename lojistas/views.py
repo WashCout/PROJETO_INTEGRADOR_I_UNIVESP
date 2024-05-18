@@ -127,3 +127,13 @@ def atualizar_status(request, venda_id):
 
         return redirect('pedidos')
     return JsonResponse({'status': 'error', 'message': 'Método inválido'}, status=400)
+
+@login_required
+def produtos_mais_pedidos(request):
+    produtos_quantidades = Vendas.get_most_ordered_products()
+    produtos = [produto for produto, quantidade in produtos_quantidades]
+    quantidades = [quantidade for produto, quantidade in produtos_quantidades]
+    return render(request, 'produtos_mais_pedidos.html', {
+        'produtos': json.dumps(produtos),
+        'quantidades': json.dumps(quantidades),
+    })
