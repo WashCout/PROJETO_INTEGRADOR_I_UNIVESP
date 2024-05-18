@@ -2,7 +2,33 @@
 {% load static %}
 
 {% block 'head' %}
-
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+<style>
+  h1 {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+  .modal-body {
+    font-size: 1rem;
+  }
+  .details-table {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .details-table th, .details-table td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+  .details-table th {
+    background-color: #f8f9fa;
+    text-align: left;
+  }
+  .details-table td {
+    background-color: #fff;
+  }
+</style>
 {% endblock 'head' %}
 
 {% block 'body' %}
