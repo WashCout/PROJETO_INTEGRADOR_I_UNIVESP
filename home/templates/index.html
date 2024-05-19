@@ -6,34 +6,32 @@
 {% endblock 'head' %}
 
 {% block 'body' %}
-{% if messages %}
-<br>
-{% for message in messages %}
-    <section class="alert {{message.tags}} small-message">
-        {{message}}
-    </section>
-{% endfor %}
-{% endif %}
 <div class="d-flex justify-content-center align-items-center h-100">
   <div class="card">
     <div class="card-header d-flex justify-content-center p-3">
       <img src="{% static 'home/img/logo-frutos-de-goias.png' %}" class="img-logo" alt="Logo">
     </div>
-    <div class="col-md d-flex justify-content-center">
-      <hr>
+    <div class="card-body d-flex justify-content-center">
       <form action="{% url 'index' %}" method="POST"> {% csrf_token %}
         <div class="input-group mb-3">
-          <span class="input-group-text bg-primary">
+          <span class="input-group-text text-white bg-primary">
             <i class="bi bi-person-fill"></i>
           </span>
           <input type="text" class="form-control" id="username" name="username" placeholder="Usuário" required>
         </div>
         <div class="input-group mb-3">
-          <span class="input-group-text bg-primary">
+          <span class="input-group-text text-white bg-primary">
             <i class="bi bi-lock-fill"></i>
           </span>
           <input type="password" class="form-control" id="password" name="password" placeholder="Senha" required>
         </div>
+        {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-warning text-center" role="alert">
+            <small>{{ message }}</small>
+          </div>
+          {% endfor %}
+        {% endif %}
         <div class="d-flex justify-content-center mt-3">
           <button type="submit" class="btn btn-primary">
             Entrar <i class="bi bi-box-arrow-in-right"></i>
