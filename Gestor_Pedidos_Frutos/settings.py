@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)9w-%swf7=l*&rytgt+d07+)x%!6b_p3)s4qhm%$ut0_*i6p^f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['gestor-pedidos-fg-django-render.onrender.com']
 
 LOGIN_URL = 'login'
 
