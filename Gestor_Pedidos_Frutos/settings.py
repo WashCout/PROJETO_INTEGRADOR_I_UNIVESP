@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'Gestor_Pedidos_Frutos.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'databasegestor',
-        'USER': 'root',
-        'PASSWORD': 'Univesp55*',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'fruto_de_goias',
+        'USER': 'fruto_de_goias_user',
+        'PASSWORD': 'jaqQ93GUItbrkw7CQhbRmoLyKfa1oJM5*',
+        'HOST': 'dpg-cp76h6vsc6pc73a51esg-a',
+        'PORT': '5432',
         'TIME_ZONE': 'America/Sao_Paulo',
     }
 }
