@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -89,6 +90,15 @@ DATABASES = {
         'PORT': '5432',
         'TIME_ZONE': 'America/Sao_Paulo',
     }
+}
+
+# Replace the SQLite DATABASES configuration with PostgreSQL:
+DATABASES = {
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgres://fruto_de_goias_user:jaqQ93GUItbrkw7CQhbRmoLyKfa1oJM5@dpg-cp76h6vsc6pc73a51esg-a/fruto_de_goias',
+        conn_max_age=600
+    )
 }
 
 
