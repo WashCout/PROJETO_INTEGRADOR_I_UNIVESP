@@ -27,9 +27,9 @@ SECRET_KEY = 'django-insecure-)9w-%swf7=l*&rytgt+d07+)x%!6b_p3)s4qhm%$ut0_*i6p^f
 DEBUG = True
 
 ALLOWED_HOSTS = ['projeto-integrador-i-univesp-1.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://projeto-integrador-i-univesp-1.onrender.com']
 
 LOGIN_URL = 'login'
-
 
 # Application definition
 
