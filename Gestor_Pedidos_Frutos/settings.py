@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)9w-%swf7=l*&rytgt+d07+)x%!6b_p3)s4qhm%$ut0_*i6p^f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://projeto-integrador-i-univesp-1.onrender.com']
 
 LOGIN_URL = 'login'
 
@@ -79,18 +79,6 @@ WSGI_APPLICATION = 'Gestor_Pedidos_Frutos.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'fruto_de_goias',
-        'USER': 'fruto_de_goias_user',
-        'PASSWORD': 'jaqQ93GUItbrkw7CQhbRmoLyKfa1oJM5*',
-        'HOST': 'dpg-cp76h6vsc6pc73a51esg-a',
-        'PORT': '5432',
-        'TIME_ZONE': 'America/Sao_Paulo',
-    }
-}
 
 # Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
