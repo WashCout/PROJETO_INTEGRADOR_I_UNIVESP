@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-)9w-%swf7=l*&rytgt+d07+)x%!6b_p3)s4qhm%$ut0_*i6p^f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['gestor-pedidos-fg-django-render.onrender.com']
+ALLOWED_HOSTS = ['gestor-pedidos-fg-django-render.onrender.com', 'https://projeto-integrador-i-univesp-1.onrender.com']
 
 LOGIN_URL = 'login'
 
@@ -80,15 +81,11 @@ WSGI_APPLICATION = 'Gestor_Pedidos_Frutos.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gestorfg',
-        'USER': 'gestorfg_i1fj_user',
-        'PASSWORD': 's6TkGZhc44mf4wamKkCtcJ63HrRvelsU',
-        'HOST': 'dpg-cp5a3cocmk4c73eusrqg-a',
-        'PORT': '5432',
-        'TIME_ZONE': 'America/Sao_Paulo',
-    }
+    'default': dj_database_url.config(
+        # TODO: Para a produção alterar para: postgres://gestorfg_i1fj_user:s6TkGZhc44mf4wamKkCtcJ63HrRvelsU@dpg-cp5a3cocmk4c73eusrqg-a/gestorfg_i1fj
+        default='postgres://gestorfg_i1fj_user:s6TkGZhc44mf4wamKkCtcJ63HrRvelsU@dpg-cp5a3cocmk4c73eusrqg-a.oregon-postgres.render.com/gestorfg_i1fj',
+        conn_max_age=600
+    )
 }
 
 
