@@ -15,12 +15,12 @@ def index(request):
         username = request.POST.get('username')
         password = request.POST.get("password")
 
-        print('username={username}', flush=True)
-        print('password={password}', flush=True)
+        print(f'username={username}', flush=True)
+        print(f'password={password}', flush=True)
 
         user = auth.authenticate(request, username=username, password=password)
 
-        print('user={user}')
+        print(f'user={user}')
 
         if user:
             auth.login(request, user)
@@ -39,10 +39,10 @@ def cadastro(request):
         senha = request.POST.get("senha")
         confirmar_senha = request.POST.get('confirmar_senha')
 
-        print('username={username}', flush=True)
-        print('email={email}', flush=True)
-        print('senha={senha}', flush=True)
-        print('confirmar_senha={confirmar_senha}', flush=True)
+        print(f'username={username}', flush=True)
+        print(f'email={email}', flush=True)
+        print(f'senha={senha}', flush=True)
+        print(f'confirmar_senha={confirmar_senha}', flush=True)
         
         users = User.objects.filter(username=username)
 
