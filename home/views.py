@@ -15,8 +15,8 @@ def index(request):
         username = request.POST.get('username')
         password = request.POST.get("password")
 
-        print('username={username}')
-        print('password={password}')
+        print('username={username}', flush=True)
+        print('password={password}', flush=True)
 
         user = auth.authenticate(request, username=username, password=password)
 
@@ -39,10 +39,10 @@ def cadastro(request):
         senha = request.POST.get("senha")
         confirmar_senha = request.POST.get('confirmar_senha')
 
-        print('username={username}')
-        print('email={email}')
-        print('senha={senha}')
-        print('confirmar_senha={confirmar_senha}')
+        print('username={username}', flush=True)
+        print('email={email}', flush=True)
+        print('senha={senha}', flush=True)
+        print('confirmar_senha={confirmar_senha}', flush=True)
         
         users = User.objects.filter(username=username)
 
@@ -62,7 +62,7 @@ def cadastro(request):
             )
             return redirect('/home/index')
         except Exception as e:            
-            print(f'Erro ao criar o usuário: {e}')
+            print(f'Erro ao criar o usuário: {e}', flush=True)
             messages.add_message(request, constants.ERROR, 'Erro ao criar o usuário')
             return redirect('/home/cadastro')
 
