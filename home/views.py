@@ -15,7 +15,12 @@ def index(request):
         username = request.POST.get('username')
         password = request.POST.get("password")
 
+        print('username={username}')
+        print('password={password}')
+
         user = auth.authenticate(request, username=username, password=password)
+
+        print('user={user}')
 
         if user:
             auth.login(request, user)
@@ -34,6 +39,11 @@ def cadastro(request):
         senha = request.POST.get("senha")
         confirmar_senha = request.POST.get('confirmar_senha')
 
+        print('username={username}')
+        print('email={email}')
+        print('senha={senha}')
+        print('confirmar_senha={confirmar_senha}')
+        
         users = User.objects.filter(username=username)
 
         if users.exists():
@@ -51,7 +61,9 @@ def cadastro(request):
                 password=senha
             )
             return redirect('/home/index')
-        except:            
+        except Exception as e:            
+            print(f'Erro ao criar o usuário: {e}')
+            messages.add_message(request, constants.ERROR, 'Erro ao criar o usuário')
             return redirect('/home/cadastro')
 
 def sair(request):
