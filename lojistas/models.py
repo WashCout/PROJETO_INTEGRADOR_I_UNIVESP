@@ -29,8 +29,6 @@ class Produto(models.Model):
     codigo = models.IntegerField(default=0)
     nome_produto = models.CharField(max_length=100, default='sorvete', verbose_name="Nome do Produto", primary_key=True)
     descricao = models.TextField(verbose_name="Descrição")
-    custo = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)], verbose_name="Custo", default=0.00)
-    preco = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)], verbose_name="Preço", default=0.00)
     categoria = models.CharField(
         max_length=30, 
         choices=CATEGORIAS, 
