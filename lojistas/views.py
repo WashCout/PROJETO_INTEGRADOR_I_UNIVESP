@@ -47,6 +47,7 @@ def finalizar_compra(request):
         try:
             pedido_data = json.loads(request.POST.get('pedido'))
             lojista = request.user
+            print(f'Lojista={lojista}', flush=True)
             tem_pedido_em_andamento = request.POST.get('tem_pedido_em_andamento') == 'true'
 
             pedido_str = ''
