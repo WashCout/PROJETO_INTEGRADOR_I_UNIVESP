@@ -25,7 +25,8 @@ def estoque_api(request):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
-@login_required
+# TODO: Retirar comentario
+# @login_required
 def estoque(request):
     try:
         lojista = request.user
