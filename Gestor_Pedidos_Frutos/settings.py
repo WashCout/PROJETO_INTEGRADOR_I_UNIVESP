@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['https://projeto-integrador-i-univesp-1.onrender.com']
 
 # TODO: Alterar para gestor-pedidos-fg-django-render.onrender.com
-CSRF_TRUSTED_ORIGINS = ['https://projeto-integrador-i-univesp-1.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['projeto-integrador-i-univesp-1.onrender.com']
 
 LOGIN_URL = 'login'
 
