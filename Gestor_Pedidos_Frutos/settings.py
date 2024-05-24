@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'Gestor_Pedidos_Frutos.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgres://fruto_de_goias_user:jaqQ93GUItbrkw7CQhbRmoLyKfa1oJM5@dpg-cp76h6vsc6pc73a51esg-a/fruto_de_goias',
+        default='postgres://fruto_de_goias_user:jaqQ93GUItbrkw7CQhbRmoLyKfa1oJM5@dpg-cp76h6vsc6pc73a51esg-a/fruto_de_goiaspostgres://gestorfg_i1fj_user:s6TkGZhc44mf4wamKkCtcJ63HrRvelsU@dpg-cp5a3cocmk4c73eusrqg-a.oregon-postgres.render.com/gestorfg_i1fj',
         conn_max_age=600
     )
 }
