@@ -20,7 +20,7 @@ def index(request):
 
         user = auth.authenticate(request, username=username, password=password)
 
-        print(f'user={user}')
+        print(f'user={user}', flush=True)
 
         if user:
             auth.login(request, user)

@@ -100,7 +100,9 @@ def finalizar_compra(request):
             )
             return JsonResponse({'status': 'success'})
         except Exception as e:
+            print(f'Erro ao finalizar compra: {str(e)}', flush=True)
             return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+    print('Método inválido', flush=True)
     return JsonResponse({'status': 'error'}, status=400)
 
 @login_required
