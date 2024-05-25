@@ -7,8 +7,8 @@ from django.contrib.auth.models import User
 import json
 from django.db import transaction
 
-# TODO: Retirar comentario
-# @login_required
+
+@login_required
 def estoque_api(request):
     try:
         estoques = Estoque.objects.all().select_related('produto')
