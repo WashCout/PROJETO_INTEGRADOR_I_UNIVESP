@@ -28,6 +28,35 @@
   .details-table td {
     background-color: #fff;
   }
+/* CORREÇÕES */
+
+body, h1 {
+  color: #ffffff;
+}
+
+.active>.page-link, .page-link.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.page-link {
+  color: var(--primary-color);
+}
+
+table.dataTable {    
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+th {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+td {
+  padding: 3px 5px !important;
+  vertical-align: middle;
+}
 </style>
 {% endblock 'head' %}
 
