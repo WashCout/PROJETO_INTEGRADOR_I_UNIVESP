@@ -33,6 +33,35 @@
   .nav-link.active {
       color: #ff6347 !important;
   }
+/* CORREÇÕES */
+
+body, h1 {
+  color: #ffffff;
+}
+
+.active>.page-link, .page-link.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.page-link {
+  color: var(--primary-color);
+}
+
+table.dataTable {    
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+th {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+td {
+  padding: 3px 5px !important;
+  vertical-align: middle;
+}
 </style>
 {% endblock 'head' %}
 
@@ -46,6 +75,7 @@
       <ul class="nav d-none d-md-flex">
         <li class="nav-item"><a href="{% url 'estoque' %}" class="nav-link text-white">Estoque</a></li>
         <li class="nav-item"><a href="{% url 'pedidos' %}" class="nav-link text-white">Pedidos</a></li>
+        <li class="nav-item"><a href="/home/sair/" class="nav-link text-white">Sair</a></li>
       </ul>
       <a href="{% url 'produtos_mais_pedidos' %}" class="text-white text-decoration-none">
         <img src="{% static 'lojistas/img/arara-frutos.png' %}" class="w-50" alt="Logo"/>
@@ -60,7 +90,7 @@
     </div>
   </main>
 
-  <footer class="bg-primary text-white py-2">
+  <footer class="bg-primary text-white py-2 fixed-bottom">
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-6">

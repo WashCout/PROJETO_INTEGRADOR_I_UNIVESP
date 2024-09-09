@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 import json
 from django.db import transaction
 
+
 @login_required
 def estoque_api(request):
     try:
@@ -46,6 +47,7 @@ def finalizar_compra(request):
         try:
             pedido_data = json.loads(request.POST.get('pedido'))
             lojista = request.user
+            print(f'Lojista={lojista}', flush=True)
             tem_pedido_em_andamento = request.POST.get('tem_pedido_em_andamento') == 'true'
 
             pedido_str = ''
@@ -99,7 +101,9 @@ def finalizar_compra(request):
             )
             return JsonResponse({'status': 'success'})
         except Exception as e:
+            print(f'Erro ao finalizar compra: {str(e)}', flush=True)
             return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+    print('Método inválido', flush=True)
     return JsonResponse({'status': 'error'}, status=400)
 
 @login_required

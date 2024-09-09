@@ -58,6 +58,38 @@
     .cart-total {
         font-weight: bold;
     }
+/* CORREÇÕES */
+
+body, h1 {
+  color: #ffffff;
+}
+
+.active>.page-link, .page-link.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.page-link {
+  color: var(--primary-color);
+}
+
+table.dataTable {    
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+th {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+td {
+  padding: 3px 5px !important;
+  vertical-align: middle;
+}
+#selecionadosTable_filter {
+  display: none;
+}
 </style>
 {% endblock 'head' %}
 
@@ -71,6 +103,7 @@
       <ul class="nav d-none d-md-flex">
         <li class="nav-item"><a href="{% url 'estoque' %}" class="nav-link text-white">Estoque</a></li>
         <li class="nav-item"><a href="{% url 'pedidos' %}" class="nav-link text-white">Pedidos</a></li>
+        <li class="nav-item"><a href="/home/sair/" class="nav-link text-white">Sair</a></li>
       </ul>
       <a href="{% url 'produtos_mais_pedidos' %}" class="text-white text-decoration-none">
         <img src="{% static 'lojistas/img/arara-frutos.png' %}" class="w-50" alt="Logo"/>
@@ -83,7 +116,7 @@
     <h3 class="mb-4">Selecione os produtos para a reserva:</h3>
 
     <!-- Tabela de Estoque -->
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-lg-8">
         <table id="estoqueTable" class="table table-striped table-sm">
           <thead>
@@ -104,8 +137,8 @@
       </div>
       <!-- Tabela de Produtos Selecionados -->
       <div class="col-lg-4">
-        <h4>Produtos Selecionados:</h4>
-        <table id="selecionadosTable" class="table table-striped table-sm">
+        <h4 class="mb-4">Produtos Selecionados:</h4>
+        <table id="selecionadosTable" class="table table-striped table-sm mb-3">
           <thead>
             <tr>
               <th>Nome</th>
@@ -123,7 +156,7 @@
     </div>
   </main>
 
-  <footer class="bg-primary text-white py-2">
+  <footer class="bg-primary text-white py-2 fixed-bottom">
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-6">
@@ -184,6 +217,9 @@
     $(document).ready(function() {
       // Inicializar DataTables
       var table = $('#estoqueTable').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/2.0.7/i18n/pt-BR.json',
+        },
         ajax: {
           url: "{% url 'api_estoque' %}",
           dataSrc: ''
@@ -218,6 +254,9 @@
 
       // Produtos selecionados
       var selectedTable = $('#selecionadosTable').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/2.0.7/i18n/pt-BR.json',
+        },
         columns: [
           { data: 'nome_produto' },
           { 

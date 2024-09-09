@@ -23,13 +23,13 @@
       <hr>
       <form action="{% url 'index' %}" method="POST"> {% csrf_token %}
         <div class="input-group mb-3">
-          <span class="input-group-text bg-primary">
+          <span class="input-group-text bg-primary text-white">
             <i class="bi bi-person-fill"></i>
           </span>
           <input type="text" class="form-control" id="username" name="username" placeholder="Usuário" required>
         </div>
         <div class="input-group mb-3">
-          <span class="input-group-text bg-primary">
+          <span class="input-group-text bg-primary text-white">
             <i class="bi bi-lock-fill"></i>
           </span>
           <input type="password" class="form-control" id="password" name="password" placeholder="Senha" required>
